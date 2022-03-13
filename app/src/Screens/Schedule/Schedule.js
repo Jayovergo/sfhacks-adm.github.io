@@ -16,216 +16,256 @@ import ReactTooltip from "react-tooltip";
 const localizer = momentLocalizer(moment);
 
 function Event({ event }) {
-    if (isMacOs || isIOS)
-        return (
-            <div className="event-info-mac">
-                <div className="event-title">
-                    {event.title}
-                    <Popup
-                        trigger={
-                            <div className="event-desc-mac">
-                                <MdExpandMore />
-                            </div>
-                        }
-                        position="bottom center"
-                        nested
-                    >
-                        <div className="event-desc-txt-mac">{event.desc}</div>
-                    </Popup>
-                </div>
-
-                <div className="event-time">{event.time}</div>
-
-                {(() => {
-                    // eslint-disable-next-line eqeqeq
-                    if (event.link == "1") {
-                        return <div></div>;
-                    } else {
-                        return (
-                            <>
-                                <a data-tip data-for="link">
-                                    <a href={event.link} target="_blank" rel="noreferrer" className="event-link-mac">
-                                        <BsLink />
-                                    </a>
-                                </a>
-                                <ReactTooltip
-                                    id="link"
-                                    aria-haspopup="true"
-                                    role="example"
-                                    className="event-link-pop-mac"
-                                    textColor="#1c1818"
-                                    backgroundColor="#f5f5f5"
-                                    arrowColor="#1c1818"
-                                >
-                                    Join
-                                </ReactTooltip>
-                            </>
-                        );
-                    }
-                })()}
-            </div>
-        );
-
+  if (isMacOs || isIOS)
     return (
-        <div className="event-info">
-            <div className="event-title">
-                {event.title}
-                <Popup
-                    trigger={
-                        <div className="event-desc">
-                            <MdExpandMore />
-                        </div>
-                    }
-                    position="bottom center"
-                    nested
-                >
-                    <div className="event-desc-txt">{event.desc}</div>
-                </Popup>
-            </div>
-
-            <div className="event-time">{event.time}</div>
-
-            {(() => {
-                // eslint-disable-next-line eqeqeq
-                if (event.link == "1") {
-                    return <div></div>;
-                } else {
-                    return (
-                        <>
-                            <a data-tip data-for="link">
-                                <a href={event.link} target="_blank" rel="noreferrer" className="event-link">
-                                    <BsLink />
-                                </a>
-                            </a>
-                            <ReactTooltip
-                                id="link"
-                                aria-haspopup="true"
-                                role="example"
-                                className="event-link-pop"
-                                textColor="#1c1818"
-                                backgroundColor="#f5f5f5"
-                                arrowColor="#1c1818"
-                            >
-                                Join
-                            </ReactTooltip>
-                        </>
-                    );
-                }
-            })()}
+      <div className="event-info-mac">
+        <div className="event-title">
+          {event.title}
+          <Popup
+            trigger={
+              <div className="event-desc-mac">
+                <MdExpandMore />
+              </div>
+            }
+            position="bottom center"
+            nested
+          >
+            <div className="event-desc-txt-mac">{event.desc}</div>
+          </Popup>
         </div>
+
+        <div className="event-time">{event.time}</div>
+
+        {(() => {
+          // eslint-disable-next-line eqeqeq
+          if (event.link == "1") {
+            return <div></div>;
+          } else {
+            return (
+              <>
+                <a data-tip data-for="link">
+                  <a
+                    href={event.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="event-link-mac"
+                  >
+                    <BsLink />
+                  </a>
+                </a>
+                <ReactTooltip
+                  id="link"
+                  aria-haspopup="true"
+                  role="example"
+                  className="event-link-pop-mac"
+                  textColor="#1c1818"
+                  backgroundColor="#f5f5f5"
+                  arrowColor="#1c1818"
+                >
+                  Join
+                </ReactTooltip>
+              </>
+            );
+          }
+        })()}
+      </div>
     );
+
+  return (
+    <div className="event-info">
+      <div className="event-title">
+        {event.title}
+        <Popup
+          trigger={
+            <div className="event-desc">
+              <MdExpandMore />
+            </div>
+          }
+          position="bottom center"
+          nested
+        >
+          <div className="event-desc-txt">{event.desc}</div>
+        </Popup>
+      </div>
+
+      <div className="event-time">{event.time}</div>
+
+      {(() => {
+        // eslint-disable-next-line eqeqeq
+        if (event.link == "1") {
+          return <div></div>;
+        } else {
+          return (
+            <>
+              <a data-tip data-for="link">
+                <a
+                  href={event.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="event-link"
+                >
+                  <BsLink />
+                </a>
+              </a>
+              <ReactTooltip
+                id="link"
+                aria-haspopup="true"
+                role="example"
+                className="event-link-pop"
+                textColor="#1c1818"
+                backgroundColor="#f5f5f5"
+                arrowColor="#1c1818"
+              >
+                Join
+              </ReactTooltip>
+            </>
+          );
+        }
+      })()}
+    </div>
+  );
 }
 
+const TimeInSF = () => (
+  <div className="time-in-sf banner-text">
+    <a
+      href="https://time.is/San_Francisco_State_University"
+      id="time_is_link"
+      rel="nofollow"
+    >
+      Time in SFSU :
+    </a>
+    <span id="San_Francisco_State_University_z14e"></span>
+  </div>
+);
+
 const Schedule = () => {
-    const [offsetY, setOffsetY] = useState(0);
-    const handleScroll = () => setOffsetY(window.pageYOffset);
+  const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.pageYOffset);
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <div className="schedule-section">
-            <div className="banner">
-                <div className="sch-banner-cont">
-                    <div className="banner-text text-line" style={{ transform: `translateY(-${offsetY * 0.1}px)` }}>
-                        SCHEDULE
-                    </div>
-                    <div className="banner-text" style={{ transform: `translateY(-${offsetY * 0.1}px)` }}>
-                        SCHEDULE
-                    </div>
-                    <div className="banner-text text-line" style={{ transform: `translateY(-${offsetY * 0.1}px)` }}>
-                        SCHEDULE
-                    </div>
-                    <div className="banner-text" style={{ transform: `translateY(-${offsetY * 0.1}px)` }}>
-                        SCHEDULE
-                    </div>
-                    <div className="banner-text text-line" style={{ transform: `translateY(-${offsetY * 0.1}px)` }}>
-                        SCHEDULE
-                    </div>
-                </div>
-            </div>
-            <div className="sch-big-cross-cont-one" style={{ transform: `translateY(-${offsetY * 0.05}px)` }}>
-                <div className="sch-big-cross-one"></div>
-            </div>
-
-            <div className="sch-big-cross-cont-two" style={{ transform: `translateY(-${offsetY * 0.5}px)` }}>
-                <div className="sch-big-cross-two"></div>
-            </div>
-
-            <div className="sch-small-cross-cont" style={{ transform: `translateY(-${offsetY * 0.12}px)` }}>
-                <div className="sch-small-cross"></div>
-            </div>
-            <div className="schedule-cont">
-            <a href="https://time.is/San_Francisco_State_University" id="time_is_link" rel="nofollow" style="font-size:36px">Time in SFSU:</a>
-<span id="San_Francisco_State_University_z14e"></span>
-                <div className="schedule-wrapper">
-                    <Tabs>
-                        <TabList>
-                            <div className="tab-cross">✖</div>
-                            <Tab>Day 1</Tab>
-                            <Tab>Day 2</Tab>
-                            <Tab>Day 3</Tab>
-                            <div className="tab-cross">✖</div>
-                        </TabList>
-
-                        <TabPanel>
-                            <Calendar
-                                defaultView={Views.DAY}
-                                views={{ day: true }}
-                                localizer={localizer}
-                                className="calender"
-                                startAccessor="start"
-                                endAccessor="end"
-                                components={{
-                                    event: Event,
-                                }}
-                                events={events}
-                                defaultDate={new Date(2022, 2, 11)}
-                                min={new Date(2022, 2, 11, 16, 0, 0)}
-                                max={new Date(2022, 2, 11, 20, 0, 0)}
-                            />
-                        </TabPanel>
-                        <TabPanel>
-                            <Calendar
-                                defaultView={Views.DAY}
-                                views={{ day: true }}
-                                localizer={localizer}
-                                className="calender"
-                                startAccessor="start"
-                                endAccessor="end"
-                                components={{
-                                    event: Event,
-                                }}
-                                events={events}
-                                defaultDate={new Date(2022, 2, 12)}
-                                min={new Date(2022, 2, 12, 8, 0, 0)}
-                                max={new Date(2022, 2, 12, 18, 0, 0)}
-                            />
-                        </TabPanel>
-                        <TabPanel>
-                            <Calendar
-                                defaultView={Views.DAY}
-                                views={{ day: true }}
-                                localizer={localizer}
-                                className="calender"
-                                startAccessor="start"
-                                endAccessor="end"
-                                components={{
-                                    event: Event,
-                                }}
-                                events={events}
-                                defaultDate={new Date(2022, 2, 13)}
-                                min={new Date(2022, 2, 13, 8, 0, 0)}
-                                max={new Date(2022, 2, 13, 19, 0, 0)}
-                            />
-                        </TabPanel>
-                    </Tabs>
-                </div>
-            </div>
+  return (
+    <div className="schedule-section">
+      <div className="banner">
+        <div className="sch-banner-cont">
+          <div
+            className="banner-text text-line"
+            style={{ transform: `translateY(-${offsetY * 0.1}px)` }}
+          >
+            SCHEDULE
+          </div>
+          <div
+            className="banner-text"
+            style={{ transform: `translateY(-${offsetY * 0.1}px)` }}
+          >
+            SCHEDULE
+          </div>
+          <div
+            className="banner-text text-line"
+            style={{ transform: `translateY(-${offsetY * 0.1}px)` }}
+          >
+            SCHEDULE
+          </div>
+          <div
+            className="banner-text"
+            style={{ transform: `translateY(-${offsetY * 0.1}px)` }}
+          >
+            SCHEDULE
+          </div>
+          <div
+            className="banner-text text-line"
+            style={{ transform: `translateY(-${offsetY * 0.1}px)` }}
+          >
+            SCHEDULE
+          </div>
         </div>
-    );
+      </div>
+      <div
+        className="sch-big-cross-cont-one"
+        style={{ transform: `translateY(-${offsetY * 0.05}px)` }}
+      >
+        <div className="sch-big-cross-one"></div>
+      </div>
+
+      <div
+        className="sch-big-cross-cont-two"
+        style={{ transform: `translateY(-${offsetY * 0.5}px)` }}
+      >
+        <div className="sch-big-cross-two"></div>
+      </div>
+
+      <div className="schedule-cont">
+        <TimeInSF />
+        <div className="schedule-wrapper">
+          <Tabs>
+            <TabList>
+              <div className="tab-cross">✖</div>
+              <Tab>Day 1</Tab>
+              <Tab>Day 2</Tab>
+              <Tab>Day 3</Tab>
+              <div className="tab-cross">✖</div>
+            </TabList>
+
+            <TabPanel>
+              <Calendar
+                defaultView={Views.DAY}
+                views={{ day: true }}
+                localizer={localizer}
+                className="calender"
+                startAccessor="start"
+                endAccessor="end"
+                components={{
+                  event: Event,
+                }}
+                events={events}
+                defaultDate={new Date(2022, 2, 11)}
+                min={new Date(2022, 2, 11, 16, 0, 0)}
+                max={new Date(2022, 2, 11, 20, 0, 0)}
+              />
+            </TabPanel>
+            <TabPanel>
+              <Calendar
+                defaultView={Views.DAY}
+                views={{ day: true }}
+                localizer={localizer}
+                className="calender"
+                startAccessor="start"
+                endAccessor="end"
+                components={{
+                  event: Event,
+                }}
+                events={events}
+                defaultDate={new Date(2022, 2, 12)}
+                min={new Date(2022, 2, 12, 8, 0, 0)}
+                max={new Date(2022, 2, 12, 18, 0, 0)}
+              />
+            </TabPanel>
+            <TabPanel>
+              <Calendar
+                defaultView={Views.DAY}
+                views={{ day: true }}
+                localizer={localizer}
+                className="calender"
+                startAccessor="start"
+                endAccessor="end"
+                components={{
+                  event: Event,
+                }}
+                events={events}
+                defaultDate={new Date(2022, 2, 13)}
+                min={new Date(2022, 2, 13, 8, 0, 0)}
+                max={new Date(2022, 2, 13, 19, 0, 0)}
+              />
+            </TabPanel>
+          </Tabs>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default Schedule;
