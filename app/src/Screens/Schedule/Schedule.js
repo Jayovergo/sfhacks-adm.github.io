@@ -159,6 +159,8 @@ const Schedule = () => {
                 <div className="sch-small-cross"></div>
             </div>
             <div className="schedule-cont">
+            <a href="https://time.is/San_Francisco_State_University" id="time_is_link" rel="nofollow" style="font-size:36px">Time in SFSU:</a>
+<span id="San_Francisco_State_University_z14e"></span>
                 <div className="schedule-wrapper">
                     <Tabs>
                         <TabList>
