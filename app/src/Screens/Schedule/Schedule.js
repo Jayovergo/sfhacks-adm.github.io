@@ -133,9 +133,9 @@ const TimeInSF = () => (
       id="time_is_link"
       rel="nofollow"
     >
-      Time in SFSU :
+      Time in PST :
     </a>
-    <span id="San_Francisco_State_University_z14e"></span>
+    <span id="_zU-480" ></span>
   </div>
 );
 
